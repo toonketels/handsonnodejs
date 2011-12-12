@@ -1,4 +1,4 @@
-// We are going to override the contents of file b.txt with the string below.
+// We are going to append a string.
 
 var fs = require( 'fs' );
 
@@ -6,13 +6,18 @@ var fs = require( 'fs' );
 // open it
 // write to it (no need to read it)
 
-// Open a file to be written to (w flag)
-fs.open( 'b.txt', 'w', function( error, fileDescription ){
+// Open a file to be appended to (a flag)
+fs.open( 'b.txt', 'a', function( error, fileDescription ){
+    if ( error ) {
+        throw( error );
+    }
     // Create a buffer
     // Passing utf8 as encoding is not necesary as it's the defaults for strings.
-    var buffer = new Buffer('ABCDEFGHIJLKLMNOPQRSTUVXYZ0123456789abcdefghijklmnopqrstuvxyz', 'utf8');
+    var buffer = new Buffer('abc', 'utf8');
     // Write to the file.
-    fs.write( fileDescription, buffer, 0, buffer.length, 0, function( error, written, buffer ) {
+    // Passing null as position of file will append the string
+    // on the current possition (and we opened file with a flag so its at the end)
+    fs.write( fileDescription, buffer, 0, buffer.length, null, function( error, written, buffer ) {
         if ( error ) {
             throw( error );
         }
