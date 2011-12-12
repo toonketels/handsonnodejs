@@ -8,3 +8,7 @@ for( var i = 0; i < buffer.lenght; i++ ) {
 
 // Prints it
 console.log( buffer );
+
+var sliced_buffer = buffer.slice(40, 60);
+
+console.log( sliced_buffer );
