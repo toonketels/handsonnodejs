@@ -1,24 +1,10 @@
-// We need http module to create a server.
+// Consize example of server
 
-// To create a server we do 3 things:
-//  - create server
-//  - define how to respond to requests
-//  - listen on a port
-
-var http = require('http');
-
-// Create the server
-var server = http.createServer();
-// Define what to do when a request happens.
-// We start listening on the request event.
-server.on('request', function(request, response) {
-    // Set the http header
+// Directly call createServer on http module,
+// pass it the response function as an argument.
+require('http').createServer(function(request, response){
     response.writeHead(200, {'Content-Type': 'text/plain'});
-    // Set the contents.
-    response.write('Hello world!');
-    response.end();
-});
-// Start listening on port 4000,
-// we can use the server on http://localhost:4000
-// (first start the server via 'node server.js, of course)
-server.listen(4000);
+    // Write http body in end method
+    response.end('Hello world!');
+// and listen directly on port 4000.
+}).listen(4000);
