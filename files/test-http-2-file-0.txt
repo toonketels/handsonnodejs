@@ -1,1 +1,1 @@
-This is my first post, see if we can post faster.
+This is my first post, see if we can post faster.Having a file named a.txt, print the size of that files in bytes.

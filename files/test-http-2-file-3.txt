@@ -1,0 +1,1 @@
+Having a file named a.txt, print the size of that files in bytes.
