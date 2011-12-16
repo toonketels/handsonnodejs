@@ -16,7 +16,7 @@ require( 'net' ).createServer( function( socket ){
     (function() {
         console.log( 'Somebody joined the chat' );
         // Adds the connection to the sockets array
-        sockets.push[socket];
+        sockets.push(socket);
         // Boadcast a message to everybody
         sockets.forEach( function( socket){
             // Sends data an the socket
@@ -37,13 +37,12 @@ require( 'net' ).createServer( function( socket ){
     socket.on( 'end', function( data ){
         // Log it and say goodbye to person
         console.log( 'somebody is leaving' );
-        socket.write( 'Bye, thank you for passing by!' );
+        socket.end();
         // Remove socket from sockets array
         var pos = sockets.indexOf(socket);
         if( pos > 0 ) {
             sockets.splice( pos, 1 );
         }
-        // Send message to everybody
         sockets.forEach( function( socket ){
             socket.write( 'Somebody is leaving' );
         });
