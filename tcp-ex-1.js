@@ -26,7 +26,7 @@ var net = require( 'net' ).createServer(function( socket ){
     
     // Here we only disconnect if we have no data received
     // for a certain time (idle)
-    var timeout = 5000;
+    var timeout = 515000;
     // Set the timeout
     socket.setTimeout(timeout);
     // This will emit the 'timeout' event which we listen to
