@@ -42,10 +42,14 @@ require( 'net' ).createServer( function( socket ){
         var pos = sockets.indexOf(socket);
         if( pos > 0 ) {
             sockets.splice( pos, 1 );
+            
+            if( sockets.length >= 1 ) {
+                sockets.forEach( function( socket ){
+                   socket.write( 'Somebody is leaving' );
+                });
+            }
         }
-        sockets.forEach( function( socket ){
-            socket.write( 'Somebody is leaving' );
-        });
+
     });
 
 }).listen( 4001 );
